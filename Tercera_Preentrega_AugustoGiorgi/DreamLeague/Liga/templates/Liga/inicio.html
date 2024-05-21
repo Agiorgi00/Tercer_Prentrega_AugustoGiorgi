@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream League</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('{% static "Liga/images/Fondo para inicio app Dream League.jpg" %}') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            text-align: center;
+            padding-top: 100px; /* Ajusta la cantidad según sea necesario */
+        }
+
+        .titulo {
+            font-size: 72px;
+            margin-bottom: 50px; /* Ajusta la cantidad según sea necesario */
+        }
+
+        .dream-league {
+            font-weight: bold;
+            color: #e90000ee; /* Cambia el color según sea necesario */
+        }
+
+        .opciones {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 200px; /* Ajusta la cantidad según sea necesario */
+        }
+
+        .opcion {
+            padding: 20px;
+            border: 2px solid #333; /* Cambia el color según sea necesario */
+            border-radius: 10px;
+            background-color: #af574c; /* Color de fondo más llamativo */
+            transition: background-color 0.3s ease;
+            margin-bottom: 50px; /* Ajusta el espacio entre los botones */
+        }
+
+        .opcion:hover {
+            background-color: #45a049; /* Cambia el color al pasar el ratón por encima */
+        }
+
+        .opcion a {
+            text-decoration: none;
+            color: white; /* Color de texto blanco */
+            font-size: 24px;
+            font-weight: bold; /* Texto en negrita */
+        }
+
+        .buscar {
+            margin-top: 50px; /* Ajusta la cantidad para bajar el formulario */
+            text-align: center;
+            padding-top: 50px; /* Ajusta la cantidad para bajar el formulario */
+        }
+
+        .buscar h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .buscar form {
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .buscar input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .buscar input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .buscar input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="titulo">Bienvenido a <span class="dream-league">Dream League</span></h1>
+    </div>
+    <div class="opciones">
+        <div class="opcion"><a href="{% url 'crear_division' %}">Ligas</a></div>
+        <div class="opcion"><a href="{% url 'crear_equipo' %}">Equipos</a></div>
+        <div class="opcion"><a href="{% url 'crear_jugador' %}">Jugadores</a></div>
+    </div>
+    <div class="buscar">
+        <h2>¿Ya tiene creada una liga? Búsquela aquí</h2>
+        <form action="{% url 'buscar_division' %}" method="get">
+            {% csrf_token %}
+            <input type="text" name="query" placeholder="Buscar Liga">
+            <input type="submit" value="Buscar">
+        </form>
+    </div>
+</body>
+</html>
+
